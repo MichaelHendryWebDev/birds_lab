@@ -8,6 +8,10 @@
 </template>
 
 <script>
+
+import { eventBus } from '../main.js'
+import SightingService from '../services/SightingService.js'
+
 export default {
   name: "sighting",
   props: ['sighting'],
@@ -17,7 +21,10 @@ export default {
     }
   },
   methods: {
-
+    deleteSighting() {
+      SightingService.deleteSighting(this.sighting._id)
+      .then(() => eventBus.$emit('sighting-deleted', this.sighting._id))
+    }
   }
 }
 </script>

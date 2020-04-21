@@ -20,6 +20,15 @@ export default {
 	},
 	mounted(){
     this.fetchData();
+
+		eventBus.$on('sighting-added', (sighting) => {
+			this.sightings.push(sighting)
+		})
+
+		eventBus.$on('sighting-deleted', (id) => {
+			const index = this.sightings.findIndex(sighting => sighting._id === id)
+			this.sightings.splice(index, 1)
+		})
   },
   methods: {
     fetchData(){
