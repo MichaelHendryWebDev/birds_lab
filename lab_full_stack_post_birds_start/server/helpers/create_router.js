@@ -33,3 +33,5 @@ const createRouter = function (collection) {
 };
 
 module.exports = createRouter;
+
+// add put and delete
